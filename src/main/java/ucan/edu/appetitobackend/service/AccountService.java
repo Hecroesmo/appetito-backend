@@ -11,7 +11,7 @@ public class AccountService {
     @Autowired
     private AccountRepository accountRepository;
 
-    public Account findByUsername(String username) {
-        return accountRepository.findByUsername(username);
+    public Account findByUsername(String email) {
+        return accountRepository.findByEmail(email).get();
     }
 }
