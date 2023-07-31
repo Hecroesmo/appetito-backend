@@ -25,4 +25,15 @@ public class ClientsService {
         person.getAccount().setPassword(passwordEncoder.encode(newPerson.getPassword()));
         return service.save(person);
     }
+
+    public Person saveAdmin(PersonRequest newPerson) {
+        Person person = new Person();
+        person.setFirstName(newPerson.getFirstName());
+        person.setLastName(newPerson.getLastName());
+        person.setPhoneNumber(newPerson.getPhoneNumber());
+        person.getAccount().setEmail(newPerson.getEmail());
+        person.getAccount().setRole(Role.ADMIN);
+        person.getAccount().setPassword(passwordEncoder.encode(newPerson.getPassword()));
+        return service.save(person);
+    }
 }

@@ -32,4 +32,10 @@ public class AuthenticationController {
     public Person register(@RequestBody PersonRequest personReq) {
         return service.register(personReq);
     }
+
+    @PostMapping("/register-admin")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Person registerAdmin(@RequestBody PersonRequest personReq) {
+        return service.registerAdmin(personReq);
+    }
 }
