@@ -40,6 +40,21 @@ public class AuthenticationService {
         return person;
     }
 
+    public Person registerAdmin(PersonRequest newPerson) {
+        Person person = new Person();
+        person.setFirstName(newPerson.getFirstName());
+        person.setLastName(newPerson.getLastName());
+        person.setPhoneNumber(newPerson.getPhoneNumber());
+
+        Account account = new Account();
+        account.setEmail(newPerson.getEmail());
+        account.setPassword(passwordEncoder.encode(newPerson.getPassword()));
+        account.setRole(Role.ADMIN);
+        person.setAccount(account);
+        person = personRepo.save(person);
+        return person;
+    }
+
     public AuthenticationResponse authenticate(AuthenticationRequest authReq) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
