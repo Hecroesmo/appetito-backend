@@ -28,7 +28,7 @@ public class SecurityConfiguration {
                 .requestMatchers("/auth/**", "/docs/**", "/swagger-ui/index.html/**")
                 .permitAll()
                 .anyRequest()
-                .authenticated()
+                .permitAll()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -38,5 +38,4 @@ public class SecurityConfiguration {
 
         return http.build();
     }
-
 }
